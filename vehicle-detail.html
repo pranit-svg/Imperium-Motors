@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details - Imperium Motors</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Imperium Motors Logo">
+                    <h1>Imperium Motors</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="new-vehicles.html">New Vehicles</a></li>
+                    <li><a href="used-vehicles.html">Used Vehicles</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h2 id="vehicle-title">Vehicle Details</h2>
+                <p>In-depth look at your chosen vehicle.</p>
+            </div>
+        </section>
+
+        <section id="vehicle-detail-content" class="content-section container vehicle-detail-section">
+            <div class="vehicle-gallery">
+                <img id="main-car-image" src="no-image-available.png" alt="Selected Vehicle" class="img-fluid rounded shadow-sm">
+            </div>
+            <div class="vehicle-info">
+                <h1 id="car-name">Loading Vehicle...</h1>
+                <p class="lead price" id="car-base-price"></p>
+                <p id="car-description" class="mt-4"></p>
+
+                <h4 class="mt-4">Key Specifications:</h4>
+                <ul id="car-specs" class="specs-list">
+                    </ul>
+
+                <div class="car-configurator mt-5">
+                    <h3>Configure Your Dream Car</h3>
+
+                    <div class="config-option">
+                        <h4>1. Choose Exterior Color: <span id="selected-color-name"></span></h4>
+                        <div id="color-options" class="option-selection color-swatches">
+                            <div class="color-swatch" data-color-id="white" style="background-color: #F0F0F0;" title="White"></div>
+                            <div class="color-swatch" data-color-id="black" style="background-color: #222222;" title="Black"></div>
+                            <div class="color-swatch" data-color-id="silver" style="background-color: #C0C0C0;" title="Silver"></div>
+                            <div class="color-swatch" data-color-id="blue" style="background-color: #000080;" title="Midnight Blue"></div>
+                            <div class="color-swatch" data-color-id="red" style="background-color: #8B0000;" title="Deep Red"></div>
+                        </div>
+                    </div>
+
+                    <div class="config-option mt-4">
+                        <h4>2. Select Wheel Type: <span id="selected-wheel-name"></span></h4>
+                        <div id="wheel-options" class="option-selection wheel-selection">
+                            <label class="wheel-option">
+                                <input type="radio" name="wheel-type" value="standard" checked>
+                                <img src="standard-wheel.png" alt="Standard Wheels">
+                                <span>Standard Wheels <br><small>+ $0</small></span>
+                            </label>
+                            <label class="wheel-option">
+                                <input type="radio" name="wheel-type" value="sport">
+                                <img src="sport-wheel.png" alt="Sport Wheels">
+                                <span>Sport Wheels <br><small>+ $1,500</small></span>
+                            </label>
+                            <label class="wheel-option">
+                                <input type="radio" name="wheel-type" value="premium">
+                                <img src="premium-wheel.png" alt="Premium Wheels">
+                                <span>Premium Wheels <br><small>+ $2,800</small></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-option mt-4">
+                        <h4>3. Choose Interior Package: <span id="selected-interior-name"></span></h4>
+                        <select id="interior-package-select" class="form-control">
+                            <option value="standard" selected>Standard Leather Interior</option>
+                            <option value="premium">Premium Nappa Leather (+ $2,000)</option>
+                            <option value="alcantara">Alcantara Sport Interior (+ $3,500)</option>
+                        </select>
+                    </div>
+
+                    <div class="config-option mt-4">
+                        <h4>4. Add Optional Features:</h4>
+                        <div id="optional-features" class="option-selection feature-checkboxes">
+                            <label class="feature-checkbox">
+                                <input type="checkbox" data-feature-id="sunroof"> Panoramic Sunroof (+ $1,200)
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox" data-feature-id="hud"> Heads-Up Display (+ $800)
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox" data-feature-id="audio"> Premium Audio System (+ $1,500)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-summary mt-5 p-3 rounded shadow-sm">
+                        <h3>Your Configuration Summary</h3>
+                        <p>Base Price: <span id="summary-base-price"></span></p>
+                        <p>Selected Color: <span id="summary-color"></span></p>
+                        <p>Selected Wheels: <span id="summary-wheels"></span></p>
+                        <p>Selected Interior: <span id="summary-interior"></span></p>
+                        <p>Optional Features: <span id="summary-features">None selected</span></p>
+                        <hr>
+                        <h2 class="text-primary">Total Configured Price: <span id="total-price"></span></h2>
+                    </div>
+
+                </div>
+                <input type="hidden" id="car-name-hidden" value="">
+                <input type="hidden" id="car-price-hidden" value="">
+
+                <div class="d-flex flex-wrap gap-2 mt-4 action-buttons">
+                    <a href="financing.html" class="btn btn-primary">Get Financing</a>
+                    <a href="#" class="btn btn-info" onclick="window.print(); return false;">Print Page</a>
+                    <button id="buy-car-btn" class="btn btn-success btn-lg flex-grow-1">Buy Configured Car Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <p>Imperium Motors is committed to providing an exceptional car buying and service experience. We offer a wide selection of new and pre-owned vehicles.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="new-vehicles.html">New Inventory</a></li>
+                        <li><a href="used-vehicles.html">Used Inventory</a></li>
+                        <li><a href="financing.html">Financing</a></li>
+                        <li><a href="service.html">Service & Parts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Imperium Motors. All Rights Reserved.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
